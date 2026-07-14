@@ -6,36 +6,68 @@
 <title>Benjamin Gaming</title>
 
 <style>
-body{
+*{
     margin:0;
-    background:#000;
-    color:white;
+    padding:0;
+    box-sizing:border-box;
     font-family:Arial,sans-serif;
 }
 
+body{
+    background:#050505;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* Animated background glow */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(0,191,255,0.25), transparent 40%),
+        radial-gradient(circle at 80% 30%, rgba(192,192,192,0.20), transparent 40%),
+        radial-gradient(circle at 50% 80%, rgba(0,191,255,0.20), transparent 40%);
+    animation: glow 10s infinite alternate;
+    z-index:-1;
+}
+
+@keyframes glow{
+    from{transform:scale(1);}
+    to{transform:scale(1.1);}
+}
+
 header{
-    background:#111;
-    padding:15px;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    border-bottom:2px solid #FFC107;
+    padding:20px;
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(255,255,255,0.1);
 }
 
 .logo{
-    color:#FFC107;
     font-size:28px;
     font-weight:bold;
+    color:#D9D9D9;
+    text-shadow:0 0 15px #00BFFF;
+}
+
+nav{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
 }
 
 nav a{
-    color:white;
+    color:#C0C0C0;
     text-decoration:none;
-    margin:0 10px;
+    transition:0.3s;
 }
 
 nav a:hover{
-    color:#FFC107;
+    color:#00BFFF;
 }
 
 .hero{
@@ -44,52 +76,101 @@ nav a:hover{
 }
 
 .hero h1{
-    color:#FFC107;
-    font-size:50px;
+    font-size:56px;
+    color:#D9D9D9;
+    text-shadow:
+        0 0 10px #00BFFF,
+        0 0 20px #00BFFF,
+        0 0 40px #00BFFF;
 }
 
 .hero p{
-    color:#ccc;
+    margin-top:20px;
+    color:#C0C0C0;
     font-size:20px;
 }
 
-.button{
-    background:#FFC107;
-    color:black;
-    padding:15px 35px;
+.play-btn{
+    margin-top:30px;
+    padding:16px 40px;
     border:none;
-    border-radius:10px;
+    border-radius:40px;
+    background:linear-gradient(45deg,#C0C0C0,#00BFFF);
+    color:black;
+    font-size:18px;
     font-weight:bold;
     cursor:pointer;
+    box-shadow:0 0 25px #00BFFF;
 }
 
-.section{
-    padding:40px 20px;
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+}
+
+.section-title{
+    text-align:center;
+    margin:40px 0 20px;
+    color:#D9D9D9;
+    text-shadow:0 0 10px #00BFFF;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
 }
 
 .card{
-    background:#111;
-    margin:15px;
-    padding:20px;
-    border-radius:15px;
-    border:1px solid #333;
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:20px;
+    padding:25px;
     text-align:center;
+    transition:0.3s;
 }
 
-.card h2{
-    color:#FFC107;
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 25px rgba(0,191,255,0.4);
 }
 
-.languages{
-    text-align:center;
-    margin-top:20px;
+.card h3{
+    margin-bottom:10px;
+    color:#D9D9D9;
+}
+
+.card p{
+    color:#B0B0B0;
 }
 
 footer{
-    background:#111;
-    padding:20px;
     text-align:center;
-    margin-top:40px;
+    padding:30px;
+    color:#777;
+}
+
+/* Mobile Responsive */
+@media(max-width:768px){
+    header{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .play-btn{
+        width:90%;
+        max-width:300px;
+    }
 }
 </style>
 </head>
@@ -97,55 +178,86 @@ footer{
 <body>
 
 <header>
-<div class="logo">BENJAMIN GAMING</div>
+    <div class="logo">⚡ BENJAMIN GAMING</div>
 
-<nav>
-<a href="sports.html">Sports</a>
-<a href="casino.html">Casino</a>
-<a href="prediction.html">Prediction</a>
-<a href="wallet.html">Wallet</a>
-<a href="login.html">Login</a>
-</nav>
+    <nav>
+        <a href="sports.html">Sports</a>
+        <a href="casino.html">Casino</a>
+        <a href="prediction.html">Prediction</a>
+        <a href="wallet.html">Wallet</a>
+        <a href="login.html">Login</a>
+    </nav>
 </header>
 
-<div class="hero">
-<h1>BENJAMIN GAMING</h1>
-<p>Bet. Play. Win.</p>
+<section class="hero">
+    <h1>BENJAMIN GAMING</h1>
+    <p>Bet • Play • Win</p>
 
-<button class="button">PLAY NOW</button>
+    <button class="play-btn">PLAY NOW</button>
+</section>
 
-<div class="languages">
-🌐 Languages:
-🇬🇧 English |
-🇮🇳 हिन्दी |
-🏴 मराठी
-</div>
-</div>
+<div class="container">
 
-<div class="section">
-<div class="card">
-<h2>⚽ Sports Betting</h2>
-<p>Cricket • Football • Tennis</p>
-</div>
+    <h2 class="section-title">🔥 Trending Games</h2>
 
-<div class="card">
-<h2>🎰 Casino Games</h2>
-<p>Dice • Coin Flip • Mines • Roulette</p>
-</div>
+    <div class="grid">
+        <div class="card">
+            <h3>🎲 Dice</h3>
+            <p>Fast and exciting gameplay.</p>
+        </div>
 
-<div class="card">
-<h2>📈 Prediction Markets</h2>
-<p>Predict and win rewards.</p>
-</div>
+        <div class="card">
+            <h3>💣 Mines</h3>
+            <p>Avoid the mines and increase rewards.</p>
+        </div>
 
-<div class="card">
-<h2>💰 Wallet</h2>
-<p>Deposit • Withdraw • History</p>
-</div>
+        <div class="card">
+            <h3>📈 Crash</h3>
+            <p>Cash out before the multiplier crashes.</p>
+        </div>
+    </div>
+
+    <h2 class="section-title">⚽ Sports</h2>
+
+    <div class="grid">
+        <div class="card">
+            <h3>🏏 Cricket</h3>
+            <p>International and league matches.</p>
+        </div>
+
+        <div class="card">
+            <h3>⚽ Football</h3>
+            <p>Top leagues around the world.</p>
+        </div>
+
+        <div class="card">
+            <h3>🎾 Tennis</h3>
+            <p>ATP, WTA and Grand Slam events.</p>
+        </div>
+    </div>
+
+    <h2 class="section-title">📈 Prediction Markets</h2>
+
+    <div class="grid">
+        <div class="card">
+            <h3>Prediction Hub</h3>
+            <p>Predict outcomes and compete on the leaderboard.</p>
+        </div>
+    </div>
+
+    <h2 class="section-title">💰 Wallet</h2>
+
+    <div class="grid">
+        <div class="card">
+            <h3>Balance</h3>
+            <p>₹0.00</p>
+        </div>
+    </div>
+
 </div>
 
 <footer>
-© 2026 Benjamin Gaming
+    © 2026 Benjamin Gaming
 </footer>
 
 </body>
