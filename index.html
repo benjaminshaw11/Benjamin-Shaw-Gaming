@@ -6,50 +6,30 @@
 <title>Benjamin Gaming</title>
 
 <style>
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family:Arial,sans-serif;
 }
 
 body{
     background:#050505;
     color:white;
-    overflow-x:hidden;
-    padding-bottom:90px;
+    padding-bottom:80px;
 }
-
-/* Background Glow */
-
-body::before{
-    content:'';
-    position:fixed;
-    inset:0;
-    background:
-    radial-gradient(circle at 20% 20%, rgba(196,240,0,0.15), transparent 35%),
-    radial-gradient(circle at 80% 30%, rgba(196,240,0,0.12), transparent 35%),
-    radial-gradient(circle at 50% 80%, rgba(196,240,0,0.12), transparent 35%);
-    z-index:-1;
-}
-
-/* Header */
 
 .header{
+    position:fixed;
+    top:0;
+    width:100%;
+    background:#111;
+    padding:15px;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:15px;
-    background:#0B0B0B;
     border-bottom:1px solid #222;
-    position:sticky;
-    top:0;
-    z-index:100;
-}
-
-.menu{
-    font-size:28px;
+    z-index:1000;
 }
 
 .logo{
@@ -59,218 +39,225 @@ body::before{
 }
 
 .wallet{
-    background:#161616;
-    padding:10px 15px;
-    border-radius:15px;
+    background:#1a1a1a;
+    padding:8px 15px;
+    border-radius:12px;
 }
 
-.deposit{
-    background:#C4F000;
-    color:black;
-    border:none;
-    padding:10px 18px;
-    border-radius:15px;
-    font-weight:bold;
+.page{
+    display:none;
+    padding:80px 15px 90px;
 }
 
-/* Banner */
+.active{
+    display:block;
+}
 
 .banner{
-    margin:15px;
+    background:linear-gradient(135deg,#1a1a1a,#111);
+    border-radius:20px;
     padding:25px;
-    background:linear-gradient(135deg,#111,#1b1b1b);
-    border-radius:25px;
-    border:1px solid #222;
+    margin-bottom:20px;
 }
 
 .banner h1{
     color:#C4F000;
-    font-size:34px;
-}
-
-.banner p{
-    color:#bdbdbd;
-    margin-top:10px;
-    margin-bottom:20px;
-}
-
-.play-btn{
-    background:#C4F000;
-    color:black;
-    border:none;
-    padding:14px 25px;
-    border-radius:15px;
-    font-weight:bold;
-}
-
-/* Cards */
-
-.title{
-    margin:20px 15px;
-    font-size:24px;
-}
-
-.scroll{
-    display:flex;
-    overflow:auto;
-    gap:15px;
-    padding:0 15px;
+    margin-bottom:10px;
 }
 
 .card{
-    min-width:160px;
     background:#111;
+    border:1px solid #222;
     border-radius:20px;
     padding:20px;
-    border:1px solid #222;
+    margin-bottom:15px;
 }
 
-.card img{
-    width:100%;
-    border-radius:15px;
-}
-
-.amount{
-    color:#C4F000;
-    font-size:24px;
-    font-weight:bold;
-    margin-top:10px;
-}
-
-.grid{
+.sports-grid{
     display:grid;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:repeat(2,1fr);
     gap:15px;
-    padding:15px;
 }
 
-.category{
+.sport{
     background:#111;
-    border-radius:25px;
-    text-align:center;
-    padding:35px 20px;
     border:1px solid #222;
-    font-size:22px;
+    border-radius:20px;
+    text-align:center;
+    padding:25px 10px;
+    font-size:18px;
 }
 
-.category:hover{
-    border-color:#C4F000;
+.odd-row{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
 }
 
-/* Bottom Navigation */
+.odd{
+    flex:1;
+    background:#1a1a1a;
+    padding:15px;
+    text-align:center;
+    border-radius:12px;
+    color:#C4F000;
+    font-weight:bold;
+}
 
-.bottom{
+.bottom-nav{
     position:fixed;
     bottom:0;
-    left:0;
     width:100%;
-    background:#0B0B0B;
+    background:#111;
     display:flex;
     justify-content:space-around;
-    padding:15px 0;
+    padding:12px 0;
     border-top:1px solid #222;
 }
 
-.bottom a{
+.bottom-nav button{
+    background:none;
+    border:none;
     color:white;
-    text-decoration:none;
-    text-align:center;
-    font-size:13px;
+    font-size:12px;
 }
 
-/* Mobile */
-
-@media(max-width:768px){
-    .logo{
-        font-size:18px;
-    }
-
-    .banner h1{
-        font-size:28px;
-    }
+.active-tab{
+    color:#C4F000 !important;
 }
 
+@media(min-width:768px){
+    .sports-grid{
+        grid-template-columns:repeat(4,1fr);
+    }
+}
 </style>
 </head>
 
 <body>
 
 <div class="header">
-    <div class="menu">☰</div>
     <div class="logo">BENJAMIN</div>
-    <div class="wallet">₹0</div>
-    <button class="deposit">Deposit</button>
+    <div class="wallet">₹0.00</div>
 </div>
 
-<div class="banner">
-    <h1>WELCOME BONUS</h1>
-    <p>Premium Gaming Experience</p>
-    <button class="play-btn">PLAY NOW</button>
-</div>
+<!-- HOME -->
+<div id="home" class="page active">
 
-<h2 class="title">🏆 Recent Winners</h2>
-
-<div class="scroll">
-
-    <div class="card">
-        <img src="https://picsum.photos/200/120?1">
-        <div class="amount">₹84K</div>
+    <div class="banner">
+        <h1>WELCOME TO BENJAMIN GAMING</h1>
+        <p>Sports • Casino • Wallet</p>
     </div>
 
     <div class="card">
-        <img src="https://picsum.photos/200/120?2">
-        <div class="amount">₹403K</div>
+        <h2>🔥 Popular Sports</h2>
+        <br>
+        🏏 Cricket<br><br>
+        ⚽ Football<br><br>
+        🎾 Tennis
+    </div>
+
+</div>
+
+<!-- SPORTS -->
+<div id="sports" class="page">
+
+    <h2>⚽ Sports</h2>
+    <br>
+
+    <div class="sports-grid">
+        <div class="sport">🏏<br>Cricket</div>
+        <div class="sport">⚽<br>Football</div>
+        <div class="sport">🎾<br>Tennis</div>
+        <div class="sport">🏀<br>Basketball</div>
+        <div class="sport">🥊<br>UFC</div>
+        <div class="sport">🎮<br>Esports</div>
+    </div>
+
+    <br>
+
+    <div class="card">
+        <h3>🔴 Live Match</h3>
+        <br>
+        India vs Australia
+
+        <div class="odd-row">
+            <div class="odd">India<br>1.85</div>
+            <div class="odd">Draw<br>3.40</div>
+            <div class="odd">Australia<br>2.10</div>
+        </div>
+    </div>
+
+</div>
+
+<!-- CASINO -->
+<div id="casino" class="page">
+
+    <h2>🎰 Casino</h2>
+    <br>
+
+    <div class="sports-grid">
+        <div class="sport">🎲<br>Dice</div>
+        <div class="sport">💣<br>Mines</div>
+        <div class="sport">📈<br>Crash</div>
+        <div class="sport">🎡<br>Roulette</div>
+    </div>
+
+</div>
+
+<!-- WALLET -->
+<div id="wallet-page" class="page">
+
+    <div class="card">
+        <h2>💰 Wallet Balance</h2>
+        <br>
+        ₹0.00
     </div>
 
     <div class="card">
-        <img src="https://picsum.photos/200/120?3">
-        <div class="amount">₹92K</div>
+        Deposit
+    </div>
+
+    <div class="card">
+        Withdraw
     </div>
 
 </div>
 
-<h2 class="title">🔥 Categories</h2>
+<!-- PROFILE -->
+<div id="profile" class="page">
 
-<div class="grid">
-
-    <div class="category">
-        🎰<br><br>Casino
-    </div>
-
-    <div class="category">
-        ⚽<br><br>Sports
-    </div>
-
-    <div class="category">
-        📈<br><br>Prediction
-    </div>
-
-    <div class="category">
-        💰<br><br>Wallet
-    </div>
+    <div class="card">👤 My Profile</div>
+    <div class="card">🎟 My Bets</div>
+    <div class="card">⚙ Settings</div>
+    <div class="card">📞 Support</div>
 
 </div>
 
-<h2 class="title">🎮 Popular Games</h2>
-
-<div class="grid">
-
-    <div class="category">🎲 Dice</div>
-    <div class="category">💣 Mines</div>
-    <div class="category">📈 Crash</div>
-    <div class="category">🎡 Roulette</div>
-
+<div class="bottom-nav">
+    <button class="active-tab" onclick="showPage('home',this)">🏠<br>Home</button>
+    <button onclick="showPage('sports',this)">⚽<br>Sports</button>
+    <button onclick="showPage('casino',this)">🎰<br>Casino</button>
+    <button onclick="showPage('wallet-page',this)">💰<br>Wallet</button>
+    <button onclick="showPage('profile',this)">👤<br>Profile</button>
 </div>
 
-<div class="bottom">
+<script>
+function showPage(page,btn){
 
-    <a href="index.html">🏠<br>Home</a>
-    <a href="casino.html">🎰<br>Casino</a>
-    <a href="sports.html">⚽<br>Sports</a>
-    <a href="wallet.html">💰<br>Wallet</a>
-    <a href="login.html">👤<br>Profile</a>
+    document.querySelectorAll('.page').forEach(
+        p=>p.classList.remove('active')
+    );
 
-</div>
+    document.getElementById(page).classList.add('active');
+
+    document.querySelectorAll('.bottom-nav button').forEach(
+        b=>b.classList.remove('active-tab')
+    );
+
+    btn.classList.add('active-tab');
+}
+</script>
 
 </body>
 </html>
