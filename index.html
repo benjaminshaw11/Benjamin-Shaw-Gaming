@@ -6,11 +6,12 @@
 <title>Benjamin Gaming</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial,sans-serif;
+    font-family:Arial, sans-serif;
 }
 
 body{
@@ -20,152 +21,157 @@ body{
     padding-bottom:90px;
 }
 
-/* Animated background */
+/* Background Glow */
+
 body::before{
-    content:"";
+    content:'';
     position:fixed;
     inset:0;
     background:
-    radial-gradient(circle at 20% 20%, rgba(0,191,255,0.20), transparent 40%),
-    radial-gradient(circle at 80% 30%, rgba(192,192,192,0.15), transparent 40%),
-    radial-gradient(circle at 50% 80%, rgba(0,191,255,0.20), transparent 40%);
-    animation: glow 8s infinite alternate;
+    radial-gradient(circle at 20% 20%, rgba(196,240,0,0.15), transparent 35%),
+    radial-gradient(circle at 80% 30%, rgba(196,240,0,0.12), transparent 35%),
+    radial-gradient(circle at 50% 80%, rgba(196,240,0,0.12), transparent 35%);
     z-index:-1;
-}
-
-@keyframes glow{
-    from{transform:scale(1);}
-    to{transform:scale(1.1);}
 }
 
 /* Header */
 
 .header{
-    position:sticky;
-    top:0;
-    z-index:100;
     display:flex;
     justify-content:space-between;
     align-items:center;
     padding:15px;
-    background:rgba(255,255,255,0.05);
-    backdrop-filter:blur(20px);
-    border-bottom:1px solid rgba(255,255,255,0.1);
+    background:#0B0B0B;
+    border-bottom:1px solid #222;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.menu{
+    font-size:28px;
 }
 
 .logo{
-    font-size:24px;
+    color:#C4F000;
+    font-size:22px;
     font-weight:bold;
-    color:#D9D9D9;
-    text-shadow:0 0 20px #00BFFF;
 }
 
 .wallet{
-    background:rgba(255,255,255,0.05);
+    background:#161616;
     padding:10px 15px;
     border-radius:15px;
-    border:1px solid rgba(255,255,255,0.1);
 }
 
-.deposit-btn{
-    background:linear-gradient(45deg,#C0C0C0,#00BFFF);
+.deposit{
+    background:#C4F000;
     color:black;
     border:none;
-    padding:10px 20px;
-    border-radius:30px;
+    padding:10px 18px;
+    border-radius:15px;
     font-weight:bold;
 }
 
-/* Hero */
+/* Banner */
 
-.hero{
-    text-align:center;
-    padding:80px 20px;
+.banner{
+    margin:15px;
+    padding:25px;
+    background:linear-gradient(135deg,#111,#1b1b1b);
+    border-radius:25px;
+    border:1px solid #222;
 }
 
-.hero h1{
-    font-size:48px;
-    color:#D9D9D9;
-    text-shadow:
-    0 0 10px #00BFFF,
-    0 0 20px #00BFFF,
-    0 0 40px #00BFFF;
+.banner h1{
+    color:#C4F000;
+    font-size:34px;
 }
 
-.hero p{
-    margin-top:15px;
-    color:#B0B0B0;
-    font-size:18px;
+.banner p{
+    color:#bdbdbd;
+    margin-top:10px;
+    margin-bottom:20px;
 }
 
 .play-btn{
-    margin-top:30px;
-    padding:15px 40px;
-    border:none;
-    border-radius:40px;
-    background:linear-gradient(45deg,#C0C0C0,#00BFFF);
+    background:#C4F000;
     color:black;
-    font-size:18px;
+    border:none;
+    padding:14px 25px;
+    border-radius:15px;
     font-weight:bold;
-    box-shadow:0 0 25px #00BFFF;
 }
 
-/* Sections */
+/* Cards */
 
-.section{
+.title{
+    margin:20px 15px;
+    font-size:24px;
+}
+
+.scroll{
+    display:flex;
+    overflow:auto;
+    gap:15px;
+    padding:0 15px;
+}
+
+.card{
+    min-width:160px;
+    background:#111;
+    border-radius:20px;
     padding:20px;
+    border:1px solid #222;
 }
 
-.section-title{
-    margin-bottom:20px;
-    color:#D9D9D9;
-    text-shadow:0 0 10px #00BFFF;
+.card img{
+    width:100%;
+    border-radius:15px;
+}
+
+.amount{
+    color:#C4F000;
+    font-size:24px;
+    font-weight:bold;
+    margin-top:10px;
 }
 
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    grid-template-columns:1fr 1fr;
     gap:15px;
+    padding:15px;
 }
 
-.card{
-    background:rgba(255,255,255,0.05);
-    backdrop-filter:blur(20px);
-    border:1px solid rgba(255,255,255,0.1);
-    border-radius:20px;
-    padding:25px;
+.category{
+    background:#111;
+    border-radius:25px;
     text-align:center;
-    transition:0.3s;
+    padding:35px 20px;
+    border:1px solid #222;
+    font-size:22px;
 }
 
-.card:hover{
-    transform:translateY(-5px);
-    box-shadow:0 0 20px rgba(0,191,255,0.4);
-}
-
-.card h3{
-    margin-bottom:10px;
-}
-
-.card p{
-    color:#B0B0B0;
+.category:hover{
+    border-color:#C4F000;
 }
 
 /* Bottom Navigation */
 
-.bottom-nav{
+.bottom{
     position:fixed;
     bottom:0;
     left:0;
     width:100%;
-    background:rgba(255,255,255,0.05);
-    backdrop-filter:blur(20px);
+    background:#0B0B0B;
     display:flex;
     justify-content:space-around;
     padding:15px 0;
+    border-top:1px solid #222;
 }
 
-.bottom-nav a{
+.bottom a{
     color:white;
     text-decoration:none;
     text-align:center;
@@ -175,111 +181,95 @@ body::before{
 /* Mobile */
 
 @media(max-width:768px){
-    .hero h1{
-        font-size:34px;
+    .logo{
+        font-size:18px;
     }
 
-    .header{
-        flex-wrap:wrap;
-        gap:10px;
+    .banner h1{
+        font-size:28px;
     }
 }
+
 </style>
 </head>
 
 <body>
 
 <div class="header">
-    <div>☰</div>
-    <div class="logo">⚡ BENJAMIN</div>
-    <div class="wallet">₹0.00</div>
-    <button class="deposit-btn">Deposit</button>
+    <div class="menu">☰</div>
+    <div class="logo">BENJAMIN</div>
+    <div class="wallet">₹0</div>
+    <button class="deposit">Deposit</button>
 </div>
 
-<div class="hero">
-    <h1>BENJAMIN GAMING</h1>
-    <p>Premium Sports • Casino • Prediction Platform</p>
-
-    <button class="play-btn">
-        PLAY NOW
-    </button>
+<div class="banner">
+    <h1>WELCOME BONUS</h1>
+    <p>Premium Gaming Experience</p>
+    <button class="play-btn">PLAY NOW</button>
 </div>
 
-<div class="section">
-    <h2 class="section-title">🔥 Trending Games</h2>
+<h2 class="title">🏆 Recent Winners</h2>
 
-    <div class="grid">
+<div class="scroll">
 
-        <div class="card">
-            <h3>🎲 Dice</h3>
-            <p>Fast action gameplay.</p>
-        </div>
-
-        <div class="card">
-            <h3>💣 Mines</h3>
-            <p>Risk and reward.</p>
-        </div>
-
-        <div class="card">
-            <h3>📈 Crash</h3>
-            <p>Cash out before crash.</p>
-        </div>
-
+    <div class="card">
+        <img src="https://picsum.photos/200/120?1">
+        <div class="amount">₹84K</div>
     </div>
-</div>
 
-<div class="section">
-    <h2 class="section-title">⚽ Sports</h2>
-
-    <div class="grid">
-
-        <div class="card">
-            <h3>🏏 Cricket</h3>
-        </div>
-
-        <div class="card">
-            <h3>⚽ Football</h3>
-        </div>
-
-        <div class="card">
-            <h3>🎾 Tennis</h3>
-        </div>
-
+    <div class="card">
+        <img src="https://picsum.photos/200/120?2">
+        <div class="amount">₹403K</div>
     </div>
-</div>
 
-<div class="section">
-    <h2 class="section-title">📈 Prediction Markets</h2>
-
-    <div class="grid">
-
-        <div class="card">
-            <h3>Yes / No Markets</h3>
-            <p>Predict outcomes and compete.</p>
-        </div>
-
+    <div class="card">
+        <img src="https://picsum.photos/200/120?3">
+        <div class="amount">₹92K</div>
     </div>
+
 </div>
 
-<div class="section">
-    <h2 class="section-title">💰 Wallet</h2>
+<h2 class="title">🔥 Categories</h2>
 
-    <div class="grid">
+<div class="grid">
 
-        <div class="card">
-            <h3>Balance</h3>
-            <p>₹0.00</p>
-        </div>
-
+    <div class="category">
+        🎰<br><br>Casino
     </div>
+
+    <div class="category">
+        ⚽<br><br>Sports
+    </div>
+
+    <div class="category">
+        📈<br><br>Prediction
+    </div>
+
+    <div class="category">
+        💰<br><br>Wallet
+    </div>
+
 </div>
 
-<div class="bottom-nav">
+<h2 class="title">🎮 Popular Games</h2>
+
+<div class="grid">
+
+    <div class="category">🎲 Dice</div>
+    <div class="category">💣 Mines</div>
+    <div class="category">📈 Crash</div>
+    <div class="category">🎡 Roulette</div>
+
+</div>
+
+<div class="bottom">
+
     <a href="index.html">🏠<br>Home</a>
     <a href="casino.html">🎰<br>Casino</a>
     <a href="sports.html">⚽<br>Sports</a>
     <a href="wallet.html">💰<br>Wallet</a>
     <a href="login.html">👤<br>Profile</a>
+
 </div>
 
 </body>
