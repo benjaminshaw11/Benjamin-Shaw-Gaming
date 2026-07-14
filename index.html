@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,129 +7,163 @@
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
 body{
-    background:#050505;
-    color:white;
-    padding-bottom:80px;
+background:#0b0f14;
+color:white;
+padding-bottom:80px;
 }
 
 .header{
-    position:fixed;
-    top:0;
-    width:100%;
-    background:#111;
-    padding:15px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    border-bottom:1px solid #222;
-    z-index:1000;
+position:fixed;
+top:0;
+width:100%;
+background:#111;
+padding:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:1px solid #222;
+z-index:1000;
 }
 
 .logo{
-    color:#C4F000;
-    font-size:22px;
-    font-weight:bold;
+font-size:22px;
+font-weight:bold;
+color:#c4f000;
 }
 
 .wallet{
-    background:#1a1a1a;
-    padding:8px 15px;
-    border-radius:12px;
+background:#1a1a1a;
+padding:10px 15px;
+border-radius:15px;
 }
 
-.page{
-    display:none;
-    padding:80px 15px 90px;
-}
-
-.active{
-    display:block;
+.content{
+padding:75px 15px 100px;
 }
 
 .banner{
-    background:linear-gradient(135deg,#1a1a1a,#111);
-    border-radius:20px;
-    padding:25px;
-    margin-bottom:20px;
+height:220px;
+border-radius:25px;
+padding:25px;
+display:flex;
+flex-direction:column;
+justify-content:flex-end;
+background:
+linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.85)),
+url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=1200&q=80');
+background-size:cover;
+background-position:center;
 }
 
 .banner h1{
-    color:#C4F000;
-    margin-bottom:10px;
+font-size:30px;
+color:#c4f000;
+}
+
+.banner p{
+margin-top:10px;
+color:#ddd;
+}
+
+.play{
+margin-top:15px;
+background:#c4f000;
+color:black;
+border:none;
+padding:14px;
+border-radius:15px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.title{
+margin:25px 0 15px;
+font-size:22px;
+}
+
+.scroll{
+display:flex;
+overflow-x:auto;
+gap:12px;
 }
 
 .card{
-    background:#111;
-    border:1px solid #222;
-    border-radius:20px;
-    padding:20px;
-    margin-bottom:15px;
+min-width:140px;
+background:#151515;
+padding:20px;
+border-radius:20px;
+text-align:center;
+border:1px solid #222;
+cursor:pointer;
+transition:.3s;
 }
 
-.sports-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:15px;
+.card:hover{
+border-color:#c4f000;
+transform:translateY(-5px);
 }
 
-.sport{
-    background:#111;
-    border:1px solid #222;
-    border-radius:20px;
-    text-align:center;
-    padding:25px 10px;
-    font-size:18px;
+.live{
+background:#151515;
+padding:20px;
+border-radius:20px;
+margin-top:15px;
+border:1px solid #222;
+cursor:pointer;
 }
 
-.odd-row{
-    display:flex;
-    gap:10px;
-    margin-top:15px;
+.odds{
+display:flex;
+gap:10px;
+margin-top:15px;
 }
 
 .odd{
-    flex:1;
-    background:#1a1a1a;
-    padding:15px;
-    text-align:center;
-    border-radius:12px;
-    color:#C4F000;
-    font-weight:bold;
+flex:1;
+background:#202020;
+padding:12px;
+text-align:center;
+border-radius:12px;
+cursor:pointer;
+color:#c4f000;
+font-weight:bold;
 }
 
-.bottom-nav{
-    position:fixed;
-    bottom:0;
-    width:100%;
-    background:#111;
-    display:flex;
-    justify-content:space-around;
-    padding:12px 0;
-    border-top:1px solid #222;
+.bottom{
+position:fixed;
+bottom:0;
+width:100%;
+background:#111;
+display:flex;
+justify-content:space-around;
+padding:12px 0;
+border-top:1px solid #222;
 }
 
-.bottom-nav button{
-    background:none;
-    border:none;
-    color:white;
-    font-size:12px;
+.bottom button{
+background:none;
+border:none;
+color:white;
+font-size:12px;
 }
 
-.active-tab{
-    color:#C4F000 !important;
+.active{
+color:#c4f000 !important;
 }
 
 @media(min-width:768px){
-    .sports-grid{
-        grid-template-columns:repeat(4,1fr);
-    }
+.content{
+max-width:1200px;
+margin:auto;
+padding-top:90px;
+}
 }
 </style>
 </head>
@@ -137,127 +171,74 @@ body{
 <body>
 
 <div class="header">
-    <div class="logo">BENJAMIN</div>
-    <div class="wallet">₹0.00</div>
+<div class="logo">BENJAMIN</div>
+<div class="wallet">₹0</div>
 </div>
 
-<!-- HOME -->
-<div id="home" class="page active">
+<div class="content">
 
-    <div class="banner">
-        <h1>WELCOME TO BENJAMIN GAMING</h1>
-        <p>Sports • Casino • Wallet</p>
-    </div>
-
-    <div class="card">
-        <h2>🔥 Popular Sports</h2>
-        <br>
-        🏏 Cricket<br><br>
-        ⚽ Football<br><br>
-        🎾 Tennis
-    </div>
-
+<div class="banner">
+<h1>BET BIG. WIN BIGGER.</h1>
+<p>Sports • Casino • Live Betting</p>
+<button class="play">PLAY NOW</button>
 </div>
 
-<!-- SPORTS -->
-<div id="sports" class="page">
+<h2 class="title">🔥 Popular Sports</h2>
 
-    <h2>⚽ Sports</h2>
-    <br>
+<div class="scroll">
 
-    <div class="sports-grid">
-        <div class="sport">🏏<br>Cricket</div>
-        <div class="sport">⚽<br>Football</div>
-        <div class="sport">🎾<br>Tennis</div>
-        <div class="sport">🏀<br>Basketball</div>
-        <div class="sport">🥊<br>UFC</div>
-        <div class="sport">🎮<br>Esports</div>
-    </div>
-
-    <br>
-
-    <div class="card">
-        <h3>🔴 Live Match</h3>
-        <br>
-        India vs Australia
-
-        <div class="odd-row">
-            <div class="odd">India<br>1.85</div>
-            <div class="odd">Draw<br>3.40</div>
-            <div class="odd">Australia<br>2.10</div>
-        </div>
-    </div>
+<div class="card">🏏<br><br>Cricket</div>
+<div class="card">⚽<br><br>Football</div>
+<div class="card">🎾<br><br>Tennis</div>
+<div class="card">🏀<br><br>Basketball</div>
+<div class="card">🥊<br><br>UFC</div>
+<div class="card">🎮<br><br>Esports</div>
 
 </div>
 
-<!-- CASINO -->
-<div id="casino" class="page">
+<h2 class="title">🔴 Live Matches</h2>
 
-    <h2>🎰 Casino</h2>
-    <br>
+<div class="live">
+<h3>🏏 India vs Australia</h3>
 
-    <div class="sports-grid">
-        <div class="sport">🎲<br>Dice</div>
-        <div class="sport">💣<br>Mines</div>
-        <div class="sport">📈<br>Crash</div>
-        <div class="sport">🎡<br>Roulette</div>
-    </div>
+<div class="odds">
+<div class="odd">India<br>1.85</div>
+<div class="odd">Draw<br>3.40</div>
+<div class="odd">Australia<br>2.10</div>
+</div>
+</div>
+
+<div class="live">
+<h3>⚽ Barcelona vs Real Madrid</h3>
+
+<div class="odds">
+<div class="odd">Barca<br>2.20</div>
+<div class="odd">Draw<br>3.10</div>
+<div class="odd">Madrid<br>2.90</div>
+</div>
+</div>
+
+<h2 class="title">🎰 Casino</h2>
+
+<div class="scroll">
+
+<div class="card">🎲<br><br>Dice</div>
+<div class="card">💣<br><br>Mines</div>
+<div class="card">📈<br><br>Crash</div>
+<div class="card">🎡<br><br>Roulette</div>
+<div class="card">🃏<br><br>Blackjack</div>
 
 </div>
 
-<!-- WALLET -->
-<div id="wallet-page" class="page">
-
-    <div class="card">
-        <h2>💰 Wallet Balance</h2>
-        <br>
-        ₹0.00
-    </div>
-
-    <div class="card">
-        Deposit
-    </div>
-
-    <div class="card">
-        Withdraw
-    </div>
-
 </div>
 
-<!-- PROFILE -->
-<div id="profile" class="page">
-
-    <div class="card">👤 My Profile</div>
-    <div class="card">🎟 My Bets</div>
-    <div class="card">⚙ Settings</div>
-    <div class="card">📞 Support</div>
-
+<div class="bottom">
+<button class="active">🏠<br>Home</button>
+<button>⚽<br>Sports</button>
+<button>🎰<br>Casino</button>
+<button>💰<br>Wallet</button>
+<button>👤<br>Profile</button>
 </div>
-
-<div class="bottom-nav">
-    <button class="active-tab" onclick="showPage('home',this)">🏠<br>Home</button>
-    <button onclick="showPage('sports',this)">⚽<br>Sports</button>
-    <button onclick="showPage('casino',this)">🎰<br>Casino</button>
-    <button onclick="showPage('wallet-page',this)">💰<br>Wallet</button>
-    <button onclick="showPage('profile',this)">👤<br>Profile</button>
-</div>
-
-<script>
-function showPage(page,btn){
-
-    document.querySelectorAll('.page').forEach(
-        p=>p.classList.remove('active')
-    );
-
-    document.getElementById(page).classList.add('active');
-
-    document.querySelectorAll('.bottom-nav button').forEach(
-        b=>b.classList.remove('active-tab')
-    );
-
-    btn.classList.add('active-tab');
-}
-</script>
 
 </body>
 </html>
